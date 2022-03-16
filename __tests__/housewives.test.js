@@ -34,4 +34,27 @@ describe('backend-hands-of-resources routes', () => {
     const res = await request(app).get('/api/v1/housewives/1');
     expect(res.body).toEqual(expected);
   });
+
+  it('returns a 404 if no housewife by id', async () => {
+    const res = await request(app).get('/api/v1/housewives/not-real-id');
+    expect(res.status).toEqual(404);
+  });
+
+  it('updates a housewife by id', async () => {
+    const expected = {
+      id: expect.any(String),
+      name: 'Lisa Vanderpump',
+      season: 'orange county',
+    };
+    const res = await request(app)
+      .patch('/api/v1/housewives/1')
+      .send({ season: 'orange county' });
+    expect(res.body).toEqual(expected);
+  });
+
+  it('deletes a housewife by id', async () => {
+    const expected = await Housewife.findById(1);
+    const res = request(app).delete('/api/v1/housewives/1');
+    expect(res.body).toEqual(expected);
+  });
 });
