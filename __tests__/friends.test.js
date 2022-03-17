@@ -42,7 +42,18 @@ describe('backend-hands-of-resources routes, friends table', () => {
     expect(res.status).toEqual(404);
   });
 
-  // get by id
+  it('updates a friend by id', async () => {
+    const expected = {
+      id: expect.any(String),
+      name: 'ian',
+      city: 'reno',
+      favoriteAnimal: 'hedgehog',
+    };
+    const res = await request(app)
+      .patch('/api/v1/friends/2')
+      .send({ favoriteAnimal: 'hedgehog' });
+    expect(res.body).toEqual(expected);
+  });
   // update
   // delete
 });
