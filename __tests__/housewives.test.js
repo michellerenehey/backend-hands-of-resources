@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Housewife = require('../lib/models/Housewife');
 
-describe('backend-hands-of-resources routes', () => {
+describe('backend-hands-of-resources routes, real housewives table', () => {
   beforeEach(() => {
     return setup(pool);
   });
