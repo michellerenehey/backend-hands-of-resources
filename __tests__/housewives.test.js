@@ -54,7 +54,7 @@ describe('backend-hands-of-resources routes', () => {
 
   it('deletes a housewife by id', async () => {
     const expected = await Housewife.findById(1);
-    const res = request(app).delete('/api/v1/housewives/1');
+    const res = await request(app).delete(`/api/v1/housewives/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
 });
