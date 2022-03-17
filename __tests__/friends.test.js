@@ -28,7 +28,12 @@ describe('backend-hands-of-resources routes, friends table', () => {
     const res = await request(app).get('/api/v1/friends');
     expect(res.body).toEqual(expected);
   });
-  // get all
+
+  it('gets a friend by id', async () => {
+    const expected = await Friend.findById(2);
+    const res = await request(app).get(`/api/v1/friends/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
   // get by id
   // update
   // delete
