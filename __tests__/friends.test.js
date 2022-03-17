@@ -34,6 +34,14 @@ describe('backend-hands-of-resources routes, friends table', () => {
     const res = await request(app).get(`/api/v1/friends/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('returns 404 error if no friend id', async () => {
+    const res = await request(app).get(
+      '/api/v1/friends/fake-id-does-not-exist'
+    );
+    expect(res.status).toEqual(404);
+  });
+
   // get by id
   // update
   // delete
