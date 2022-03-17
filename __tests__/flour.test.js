@@ -33,4 +33,9 @@ describe('backend-hands-of-resources routes, flour table', () => {
     const res = await request(app).get(`/api/v1/flours/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('returns 404 for flour not found', async () => {
+    const res = await request(app).get('/api/v1/flowers/fake-id');
+    expect(res.status).toEqual(404);
+  });
 });
