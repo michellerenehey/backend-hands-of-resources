@@ -33,4 +33,9 @@ describe('backend-hands-of-resources routes, icecream table', () => {
     const res = await request(app).get(`/api/v1/icecream/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('returns 404 error if no icecream by id', async () => {
+    const res = await request(app).get('/api/v1/icecream/444');
+    expect(res.status).toEqual(404);
+  });
 });
