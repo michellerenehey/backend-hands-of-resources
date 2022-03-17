@@ -38,4 +38,16 @@ describe('backend-hands-of-resources routes, icecream table', () => {
     const res = await request(app).get('/api/v1/icecream/444');
     expect(res.status).toEqual(404);
   });
+
+  it('updates icecream by id', async () => {
+    const expected = {
+      id: expect.any(String),
+      flavor: 'salted caramel',
+      brand: 'frankie & jo',
+    };
+    const res = await request(app)
+      .patch('/api/v1/icecream/1')
+      .send({ brand: 'frankie & jo' });
+    expect(res.body).toEqual(expected);
+  });
 });
