@@ -50,4 +50,10 @@ describe('backend-hands-of-resources routes, flour table', () => {
       .send({ protein: '13%' });
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes flour by id', async () => {
+    const expected = await Flour.findById(1);
+    const res = await request(app).delete(`/api/v1/flours/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
