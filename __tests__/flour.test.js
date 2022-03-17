@@ -27,4 +27,10 @@ describe('backend-hands-of-resources routes, flour table', () => {
     const res = await request(app).get('/api/v1/flours');
     expect(res.body).toEqual(expected);
   });
+
+  it('finds a flour by id', async () => {
+    const expected = await Flour.findById(1);
+    const res = await request(app).get(`/api/v1/flours/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
