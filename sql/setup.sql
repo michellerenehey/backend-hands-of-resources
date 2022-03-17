@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS housewives; 
 DROP TABLE IF EXISTS friends; 
+DROP TABLE IF EXISTS flours; 
 
 CREATE TABLE housewives (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
@@ -14,6 +15,12 @@ CREATE TABLE friends (
     favorite_animal TEXT NOT NULL
 ); 
 
+CREATE TABLE flours (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
+    type TEXT NOT NULL,
+    protein TEXT NOT NULL 
+); 
+
 INSERT INTO
     housewives (name, season)
 VALUES
@@ -25,3 +32,8 @@ VALUES
     ('forest', 'portland', 'fox'),
     ('ian', 'reno', 'cat'),
     ('adria', 'portland', 'deer');
+
+INSERT INTO
+    flours (type, protein)
+VALUES
+    ('bread', '14%');
