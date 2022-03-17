@@ -54,6 +54,10 @@ describe('backend-hands-of-resources routes, friends table', () => {
       .send({ favoriteAnimal: 'hedgehog' });
     expect(res.body).toEqual(expected);
   });
-  // update
-  // delete
+
+  it('deletes a friend by id', async () => {
+    const expected = await Friend.findById(1);
+    const res = await request(app).delete(`/api/v1/friends/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
