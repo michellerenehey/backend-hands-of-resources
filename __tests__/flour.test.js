@@ -23,7 +23,7 @@ describe('backend-hands-of-resources routes, flour table', () => {
   });
 
   it('finds a list of flours', async () => {
-    const expected = await Flour.findAll();
+    const expected = [{ id: '1', type: 'bread', protein: '14%' }];
     const res = await request(app).get('/api/v1/flours');
     expect(res.body).toEqual(expected);
   });

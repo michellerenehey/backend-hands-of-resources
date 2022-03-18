@@ -24,7 +24,11 @@ describe('backend-hands-of-resources routes, friends table', () => {
   });
 
   it('gets a list of friends', async () => {
-    const expected = await Friend.findAll();
+    const expected = [
+      { id: '1', name: 'forest', city: 'portland', favoriteAnimal: 'fox' },
+      { id: '2', name: 'ian', city: 'reno', favoriteAnimal: 'cat' },
+      { id: '3', name: 'adria', city: 'portland', favoriteAnimal: 'deer' },
+    ];
     const res = await request(app).get('/api/v1/friends');
     expect(res.body).toEqual(expected);
   });
