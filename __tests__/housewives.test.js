@@ -38,7 +38,7 @@ describe('backend-hands-of-resources routes, real housewives table', () => {
   });
 
   it('returns a 404 if no housewife by id', async () => {
-    const res = await request(app).get('/api/v1/housewives/222');
+    const res = await request(app).get('/api/v1/housewives/666');
     expect(res.status).toEqual(404);
   });
 
