@@ -16,9 +16,17 @@ describe('backend-hands-of-resources routes, chores table', () => {
     const expected = {
       name: 'sweep',
       location: 'kitchen',
-      frequency: 'daily'
+      frequency: 'daily',
     };
     const res = await request(app).post('/api/v1/chores').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
+
+  it('finds a list of chores', async () => {
+    const expected = [
+      { id: '1', name: 'make bed', location: 'bedroom', frequency: 'daily' },
+    ];
+    const res = await request(app).get('/api/v1/chores');
+    expect(res.body).toEqual(expected);
   });
 });
