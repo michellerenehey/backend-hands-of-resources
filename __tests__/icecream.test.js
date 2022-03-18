@@ -39,7 +39,7 @@ describe('backend-hands-of-resources routes, icecream table', () => {
     expect(res.status).toEqual(404);
   });
 
-  it.only('updates icecream by id', async () => {
+  it('updates icecream by id', async () => {
     const expected = {
       id: expect.any(String),
       flavor: 'salted caramel',
@@ -48,6 +48,13 @@ describe('backend-hands-of-resources routes, icecream table', () => {
     const res = await request(app)
       .patch('/api/v1/icecream/1')
       .send({ brand: 'frankie & jo' });
+    expect(res.body).toEqual(expected);
+  });
+
+  it.only('deletes an icecream by id', async () => {
+    const expected = await IceCream.findById(1);
+    console.log('expected', expected);
+    const res = await request(app).delete(`/api/v1/icecream/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
 });
