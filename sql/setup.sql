@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS flours;
 DROP TABLE IF EXISTS icecream;
 DROP TABLE IF EXISTS chores;
 
+-- creating tables
 CREATE TABLE housewives (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
     name TEXT NOT NULL,
@@ -36,6 +37,7 @@ CREATE TABLE chores (
     frequency TEXT NOT NULL
 ); 
 
+-- seeding data
 INSERT INTO
     housewives (name, season)
 VALUES
