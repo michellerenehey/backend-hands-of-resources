@@ -54,4 +54,10 @@ describe('backend-hands-of-resources routes, chores table', () => {
       .send({ location: 'guest room' });
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes a chore by id', async () => {
+    const expected = await Chore.findById(1);
+    const res = await request(app).delete(`/api/v1/chores/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
