@@ -53,7 +53,6 @@ describe('backend-hands-of-resources routes, icecream table', () => {
 
   it.only('deletes an icecream by id', async () => {
     const expected = await IceCream.findById(1);
-    console.log('expected', expected);
     const res = await request(app).delete(`/api/v1/icecream/${expected.id}`);
     expect(res.body).toEqual(expected);
   });

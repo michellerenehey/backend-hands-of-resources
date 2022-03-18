@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS housewives;
 DROP TABLE IF EXISTS friends; 
 DROP TABLE IF EXISTS flours; 
 DROP TABLE IF EXISTS icecream;
+DROP TABLE IF EXISTS chores;
 
 CREATE TABLE housewives (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
@@ -28,6 +29,13 @@ CREATE TABLE icecream (
     brand TEXT NOT NULL 
 ); 
 
+CREATE TABLE chores (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
+    name TEXT NOT NULL,
+    location TEXT NOT NULL,
+    frequency TEXT NOT NULL
+); 
+
 INSERT INTO
     housewives (name, season)
 VALUES
@@ -49,3 +57,8 @@ INSERT INTO
     icecream (flavor, brand)
 VALUES
     ('salted caramel', 'frankie and jo');
+
+INSERT INTO
+    chores (name, location, frequency)
+VALUES
+    ('make bed', 'bedroom', 'daily');
