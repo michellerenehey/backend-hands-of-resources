@@ -39,7 +39,7 @@ describe('backend-hands-of-resources routes, icecream table', () => {
     expect(res.status).toEqual(404);
   });
 
-  it('updates icecream by id', async () => {
+  it.only('updates icecream by id', async () => {
     const expected = {
       id: expect.any(String),
       flavor: 'salted caramel',
