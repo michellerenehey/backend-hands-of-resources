@@ -23,7 +23,9 @@ describe('backend-hands-of-resources routes, icecream table', () => {
   });
 
   it('gets a list of icecream', async () => {
-    const expected = await IceCream.findAll();
+    const expected = [
+      { id: '1', flavor: 'salted caramel', brand: 'frankie and jo' },
+    ];
     const res = await request(app).get('/api/v1/icecream');
     expect(res.body).toEqual(expected);
   });
