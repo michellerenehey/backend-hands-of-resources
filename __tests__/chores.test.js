@@ -36,4 +36,9 @@ describe('backend-hands-of-resources routes, chores table', () => {
     const res = await request(app).get(`/api/v1/chores/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('returns 404 for chore not found', async () => {
+    const res = await request(app).get('/api/v1/chores/111');
+    expect(res.status).toEqual(404);
+  });
 });
