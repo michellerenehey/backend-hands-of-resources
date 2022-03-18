@@ -24,7 +24,9 @@ describe('backend-hands-of-resources routes, real housewives table', () => {
   });
 
   it('gets a list of housewives', async () => {
-    const expected = await Housewife.findAll();
+    const expected = [
+      { id: '1', name: 'Lisa Vanderpump', season: 'Beverly Hills' },
+    ];
     const res = await request(app).get('/api/v1/housewives');
     expect(res.body).toEqual(expected);
   });
